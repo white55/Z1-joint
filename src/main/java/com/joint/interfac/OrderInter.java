@@ -6,7 +6,9 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
@@ -14,6 +16,8 @@ import java.io.IOException;
 /**
  * Created by 张超 on 2018/7/26.
  */
+@RestController
+@EnableScheduling
 public class OrderInter {
     String appId="FSAID_13174e6";
     String appSecret="c1dc0fb3db0145e0964b39db0bf8d910";
@@ -53,9 +57,8 @@ public class OrderInter {
             e.printStackTrace();
         }
     }
-
-    public static void main(String[] args) {
-        OrderInter orderInter=new OrderInter();
-        orderInter.getConnect();
-    }
+//    public static void main(String[] args) {
+//        OrderInter orderInter=new OrderInter();
+//        orderInter.getConnect();
+//    }
 }
