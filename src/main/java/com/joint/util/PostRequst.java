@@ -6,13 +6,14 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 
 /**
  * Created by 张超 on 2018/7/26.
  */
-
+@Component
 public class PostRequst {
     public JSONObject postRequest(String url,JSONObject args){
         DefaultHttpClient httpClient = new DefaultHttpClient();

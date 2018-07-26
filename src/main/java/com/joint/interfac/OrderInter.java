@@ -1,17 +1,21 @@
 package com.joint.interfac;
 
 import com.alibaba.fastjson.JSONObject;
+import com.joint.QueryService;
+import com.joint.entity.SaleOrderObj;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
+import java.util.List;
 
 /**
  * Created by 张超 on 2018/7/26.
@@ -19,6 +23,8 @@ import java.io.IOException;
 @RestController
 @EnableScheduling
 public class OrderInter {
+    @Autowired
+    private QueryService queryService;
     String appId="FSAID_13174e6";
     String appSecret="c1dc0fb3db0145e0964b39db0bf8d910";
     String permanentCode="A4B0AE8FE1C05E410F2080FCE228F937";
@@ -28,7 +34,7 @@ public class OrderInter {
     RestTemplate restTemplate = new RestTemplate();
     //表达式生成网站 http://cron.qqe2.com/
     //每两小时执行一次
-    @Scheduled(cron = "0 0 0/2 * * ? *")
+    @Scheduled(cron = "0/2 * * * * ? ")
     public void getConnect(){
         DefaultHttpClient httpClient = new DefaultHttpClient();
         String url = "https://open.fxiaoke.com/cgi/corpAccessToken/get/V2";
@@ -53,6 +59,8 @@ public class OrderInter {
             corpAccessToken= (String) jsonObject.get("corpAccessToken");
             corpId= (String) jsonObject.get("corpId");
             System.out.println(corpAccessToken+"=="+corpId);
+            List<SaleOrderObj> jsonObject2 = queryService.orderQuery(corpAccessToken,corpId,currentOpenUserId);
+            System.out.println(jsonObject2);
         } catch (IOException e) {
             e.printStackTrace();
         }
