@@ -33,6 +33,14 @@ public class QueryService {
                 break;
             }
         }
+        //取出未发货的订单
+        List<SaleOrderObj> list_remove=new ArrayList<>();
+        for(SaleOrderObj saleOrderObj:saleOrderObjs){
+            if(!saleOrderObj.getLogistics_status().equals("1")){
+                list_remove.add(saleOrderObj);
+            }
+        }
+        saleOrderObjs.removeAll(list_remove);
       return  saleOrderObjs;
     }
     public JSONObject getOrderQuery(String corpAccessToken,String corpId,String currentOpenUserId,String apiName,int i ){

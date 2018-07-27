@@ -60,7 +60,7 @@ public class OrderInter {
             corpId= (String) jsonObject.get("corpId");
             System.out.println(corpAccessToken+"=="+corpId);
             List<SaleOrderObj> jsonObject2 = queryService.orderQuery(corpAccessToken,corpId,currentOpenUserId);
-            System.out.println(jsonObject2);
+            System.out.println(jsonObject2.size());
         } catch (IOException e) {
             e.printStackTrace();
         }
