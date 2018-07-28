@@ -104,6 +104,10 @@ public class OrderInter  implements CommandLineRunner {
         }
 
     }
-
+    //启动时首先建立连接  开机启动方法：1.CommandLineRunner  2.AppliacationRunner
+    @Override
+    public void run(String... var1) throws Exception{
+        getConnect();
+    }
 
 }
