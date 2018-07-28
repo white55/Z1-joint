@@ -69,6 +69,7 @@ public class OrderInter  implements CommandLineRunner {
         } catch (IOException e) {
             e.printStackTrace();
         }finally{
+            //及时关闭连接
             httpClient.getConnectionManager().shutdown();
         }
     }
@@ -104,6 +105,7 @@ public class OrderInter  implements CommandLineRunner {
         } catch (IOException e) {
             e.printStackTrace();
         }finally{
+            //及时关闭连接
             httpClient.getConnectionManager().shutdown();
         }
 
