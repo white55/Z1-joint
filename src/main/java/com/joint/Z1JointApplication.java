@@ -10,5 +10,6 @@ public class Z1JointApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(Z1JointApplication.class, args);
+
 	}
 }
