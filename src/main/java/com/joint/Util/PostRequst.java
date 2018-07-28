@@ -1,4 +1,4 @@
-package com.joint.util;
+package com.joint.Util;
 
 import com.alibaba.fastjson.JSONObject;
 import org.apache.http.HttpResponse;

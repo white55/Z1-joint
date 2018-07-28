@@ -1,4 +1,4 @@
-package com.joint.entity;
+package com.joint.Entity;
 
 /**
  * Created by 张超 on 2018/7/26.

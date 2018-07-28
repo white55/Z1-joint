@@ -1,8 +1,8 @@
-package com.joint.interfac;
+package com.joint.Rnterfac;
 
 import com.alibaba.fastjson.JSONObject;
-import com.joint.QueryService;
-import com.joint.entity.SaleOrderObj;
+import com.joint.Service.QueryService;
+import com.joint.Entity.SaleOrderObj;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
