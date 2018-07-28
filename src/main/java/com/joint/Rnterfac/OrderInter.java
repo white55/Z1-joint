@@ -1,8 +1,8 @@
 package com.joint.Rnterfac;
 
 import com.alibaba.fastjson.JSONObject;
-import com.joint.Service.QueryService;
 import com.joint.Entity.SaleOrderObj;
+import com.joint.Service.QueryService;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
@@ -14,7 +14,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
 import java.util.List;
@@ -34,8 +33,13 @@ public class OrderInter  implements CommandLineRunner {
     String currentOpenUserId="FSUID_86D6587EBBC9997632D2CB92C344E6F8";
     String corpAccessToken="";
     String corpId="";
-    RestTemplate restTemplate = new RestTemplate();
+
     //表达式生成网站 http://cron.qqe2.com/
+    //启动时首先建立连接  开机启动方法：1.CommandLineRunner  2.AppliacationRunner
+    @Override
+    public void run(String... var1) throws Exception{
+        getConnect();
+    }
     //每两小时执行一次
     @Scheduled(cron = "10/59 0 0/2 * * ?   ")
     public void getConnect(){
@@ -103,11 +107,6 @@ public class OrderInter  implements CommandLineRunner {
             httpClient.getConnectionManager().shutdown();
         }
 
-    }
-    //启动时首先建立连接  开机启动方法：1.CommandLineRunner  2.AppliacationRunner
-    @Override
-    public void run(String... var1) throws Exception{
-        getConnect();
     }
 
 }
