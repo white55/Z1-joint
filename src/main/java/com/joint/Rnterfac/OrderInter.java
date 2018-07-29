@@ -34,12 +34,12 @@ public class OrderInter  implements CommandLineRunner {
     String corpAccessToken="";
     String corpId="";
 
-    //表达式生成网站 http://cron.qqe2.com/
-    //启动时首先建立连接  开机启动方法：1.CommandLineRunner  2.AppliacationRunner
+    //启动时首先建立连接  开机启动该方法：1.CommandLineRunner  2.AppliacationRunner
     @Override
     public void run(String... var1) throws Exception{
         getConnect();
     }
+    //表达式生成网站 http://cron.qqe2.com/
     //每两小时执行一次
     @Scheduled(cron = "10/59 0 0/2 * * ?   ")
     public void getConnect(){
